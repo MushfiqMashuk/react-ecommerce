@@ -1,9 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import ProductList from "../../components/ProductList";
 import "./home.scss";
 
-function Home() {
-  return (
-    <div>Home</div>
-  )
-}
+const Home = () => {
+  const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-export default Home
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        setLoading(true);
+        const productData = await axios.get(process.env.REACT_APP_GET_PRODUCTS);
+
+        const products = productData.data;
+
+        setProducts(products);
+
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getProducts();
+  }, []);
+
+  return loading ? (
+    <LoadingSpinner text="Loading products..." />
+  ) : (
+    <ProductList products={products} />
+  );
+};
+export default Home;
