@@ -6,6 +6,10 @@ const initialState = {
   total: 0,
 };
 
+/**
+ * Creating cart action and reducers with redux toolkit
+ */
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,

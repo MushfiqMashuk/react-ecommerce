@@ -3,8 +3,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import NotFoundImage from "../../styles/images/not-found.png";
 import { useNavigate } from "react-router-dom";
+import NotFoundImage from "../../styles/images/not-found.png";
 import "./singleProduct.scss";
 
 const SingleProduct = ({ id, name, price, image }) => {
@@ -12,7 +12,7 @@ const SingleProduct = ({ id, name, price, image }) => {
   const handleNavigation = () => navigate(`/product/${id}`);
 
   return (
-    <Card className="animate__animated animate__fadeIn" raised>
+    <Card raised>
       <CardActionArea>
         <CardMedia
           component="img"

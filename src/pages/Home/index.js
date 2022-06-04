@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Layout from "../../components/Layout";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import ProductList from "../../components/ProductList";
 import "./home.scss";
@@ -7,6 +8,10 @@ import "./home.scss";
 const Home = () => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  /**
+   * Fetching all the products
+   */
 
   useEffect(() => {
     const getProducts = async () => {
@@ -28,9 +33,13 @@ const Home = () => {
   }, []);
 
   return loading ? (
-    <LoadingSpinner text="Loading products..." />
+    <Layout>
+      <LoadingSpinner text="Loading products..." />
+    </Layout>
   ) : (
-    <ProductList products={products} />
+    <Layout>
+      <ProductList products={products} />
+    </Layout>
   );
 };
 export default Home;

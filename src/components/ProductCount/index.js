@@ -1,17 +1,21 @@
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/system/Box";
 import React from "react";
 import { useCounter } from "../../hooks/useCounter";
 
-import InputAdornment from "@mui/material/InputAdornment";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/system/Box";
-import Button from "@mui/material/Button";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+/**
+ * Add to cart widget functionalities
+ * @param {object} param0
+ */
 
 const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
   const { counter, increment, decrement } = useCounter(initial);
@@ -34,7 +38,9 @@ const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
         >
           <OutlinedInput
             id="outlined-adornment-weight"
-            endAdornment={<InputAdornment position="end">in bag</InputAdornment>}
+            endAdornment={
+              <InputAdornment position="end">in bag</InputAdornment>
+            }
             aria-describedby="outlined-weight-helper-text"
             type="number"
             inputProps={{

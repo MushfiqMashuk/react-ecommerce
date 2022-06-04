@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+/**
+ * A custom hook for increment and decrement purpose
+ * @param {number} initialState
+ * @returns {object}
+ */
+
 export const useCounter = (initialState = 0) => {
   const [counter, setCounter] = useState(initialState);
 

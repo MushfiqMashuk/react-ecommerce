@@ -18,37 +18,41 @@ import SuccessSnackbar from "../SuccessSnackbar";
 const ProductComponent = ({ product }) => {
   const { id, title, description, price, stock, image } = product;
   const dispatch = useDispatch();
-  const cartProduct = useSelector((state) => state.product);
+  const cartProduct = useSelector((state) => state.products);
 
   const [showSuccessBar, setShowSuccessBar] = useState(false);
 
+  /**
+   *
+   * @param {number} itemId
+   * @returns {boolean}
+   */
+
   const isInCart = (itemId) =>
     cartProduct?.some((cartItem) => cartItem.id === itemId);
+
+  /**
+   * Adding product to cart
+   * @param {number} quantity
+   *
+   */
+
   const handleAddToCart = (quantity) => {
     if (isInCart(id) || quantity === 0) return;
 
-    addProduct(
-      dispatch({
+    dispatch(
+      addProduct({
         ...product,
         quantity,
       })
     );
+
     setShowSuccessBar(true);
   };
   return (
     <>
-      <Grid
-        container
-        mt={5}
-        className="animate__animated animate__fadeIn"
-        spacing={3}
-      >
-        <Grid
-          item
-          sm={6}
-          md={4}
-          className="animate__animated animate__fadeInLeft"
-        >
+      <Grid container mt={5} spacing={3}>
+        <Grid item sm={6} md={4}>
           <Card raised>
             <CardMedia component="img" image={image} alt={id} />
           </Card>

@@ -1,6 +1,11 @@
 import Grid from "@mui/material/Grid";
 import SingleProduct from "../SingleProduct";
 
+/**
+ * Mapping all the single products in this component
+ * @param {object} param0
+ */
+
 const ProductList = ({ products }) => (
   <>
     <Grid container spacing={4} py={3}>
