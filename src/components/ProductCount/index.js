@@ -39,7 +39,7 @@ const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
           <OutlinedInput
             id="outlined-adornment-weight"
             endAdornment={
-              <InputAdornment position="end">in bag</InputAdornment>
+              <InputAdornment position="end">{counter} in bag</InputAdornment>
             }
             aria-describedby="outlined-weight-helper-text"
             type="number"
@@ -66,7 +66,7 @@ const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
           </IconButton>
           <IconButton
             aria-label="removeButtom"
-            disabled={counter < 1 || (stock < 1 && true)}
+            disabled={counter < 1 || stock < 1}
             onClick={decrement}
           >
             <RemoveIcon />
@@ -81,7 +81,7 @@ const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
         startIcon={<ShoppingCartIcon />}
         sx={{ mt: 1 }}
         onClick={handleAddBtnClick}
-        disabled={stock < 1 || (counter < 1 && true)}
+        disabled={stock < 1 || counter < 1}
       >
         Add to cart
       </Button>
